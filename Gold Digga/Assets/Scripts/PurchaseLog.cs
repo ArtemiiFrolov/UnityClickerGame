@@ -5,6 +5,7 @@ using UnityEngine;
 public class PurchaseLog : MonoBehaviour {
 
     public GameObject AutoCookie;
+    public GameObject AutoSell;
     public AudioSource playSound;
 
     public void StartAutoCookie()
@@ -18,5 +19,19 @@ public class PurchaseLog : MonoBehaviour {
             GlobalBaker.numberOfBakers += 1;
         }
         
+    }
+
+    public void StartAutoSell()
+    {
+        if (GlobalCash.CashCount >= GlobalShop.shopValue)
+        {
+            playSound.Play();
+            AutoSell.SetActive(true);
+            GlobalCash.CashCount -= GlobalShop.shopValue;
+            GlobalShop.shopValue *= 2;
+            GlobalShop.shopPerSec += 1;
+            GlobalShop.numberOfShops += 1;
+        }
+
     }
 }

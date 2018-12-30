@@ -5,10 +5,12 @@ using UnityEngine;
 public class MainButtonClick : MonoBehaviour {
 
     public GameObject textBox;
+    public AudioSource makeCookie;
 
     public void ClickTheButton()
     {
         GlobalCookies.CookieCount += 1;
+        makeCookie.Play();
     }
 
 
